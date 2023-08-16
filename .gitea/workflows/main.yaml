@@ -1,0 +1,41 @@
+name: Gitea Actions Build
+run-name: ${{ github.actor }} is on Gitea Actions 🚀
+
+
+on: [push]
+jobs:
+  Firs Job:
+    runs-on: win-x64
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - run: dir
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: node --version
+  Second Job:
+    runs-on: win-x64
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - run: dir
+      
+      - run: Write-Host '${{ github.event.head_commit.message }}'
+
+      - name: Release
+        uses: actions/release-action@main
+        with:
+          files: |-
+            **
+
+      - name: Upload SomeThing
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: index.ts
+        
+
+
+        
