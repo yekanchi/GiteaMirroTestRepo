@@ -47,4 +47,7 @@ jobs:
           Write-Host "Node Version:" -NoNewLine;
           node --verion;
           ng version;
+      - uses: OrbitalOwen/desktop-screenshot-action@0.1
+        with:
+          file-name: 'desktop.jpg'
   
